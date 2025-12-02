@@ -1,0 +1,11 @@
+.img-contaienr{
+    
+}
+.img-slide {
+    width: 600px;
+    height: auto;
+    display: none;
+}
+.img-slide.is-active{
+    display: block;
+}
