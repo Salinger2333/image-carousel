@@ -1,13 +1,18 @@
 import "./style.css";
 const imgList = document.querySelectorAll(".img-slide");
+const dots = document.querySelectorAll(".dots");
+const footerDot = document.querySelector('.carousel-dots')
 imgList.forEach((img, index) => {
   img.dataset.index = index;
+});
+dots.forEach((dot, index) => {
+  dot.dataset.point = index;
 });
 active();
 const pre = document.querySelector(".pre");
 const next = document.querySelector(".next");
 
-const changeCarsouel = (function(){
+const changeCarsouel = (function () {
   let curIndex = 0;
   const length = imgList.length;
   const increase = () => {
@@ -27,14 +32,14 @@ const changeCarsouel = (function(){
     active(curIndex);
   };
   const changeByIndex = (index) => {
-    curIndex = index
-    active(index)
-  }
+    curIndex = index;
+    active(index);
+  };
 
   return {
     increase,
     decrease,
-    changeByIndex
+    changeByIndex,
   };
 })();
 
@@ -47,9 +52,14 @@ function active(editIndex = 0) {
   });
 }
 pre.addEventListener("click", () => {
-  changeCarsouel.decrease()
+  changeCarsouel.decrease();
 });
 next.addEventListener("click", () => {
-  changeCarsouel.increase()
+  changeCarsouel.increase();
 });
-
+footerDot.addEventListener("click", (e) => {
+  if (e.target.classList.contains("dots")) {
+    const pointIndex = e.target.dataset.point;
+    changeCarsouel.changeByIndex(pointIndex);
+  }
+});

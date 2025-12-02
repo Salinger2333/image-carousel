@@ -9,3 +9,15 @@
 .img-slide.is-active{
     display: block;
 }
+.carousel-dots{
+    padding-left: 50px;
+    display: flex;
+    gap: 10px;
+}
+.dots {
+    list-style: none;
+    width: 10px;
+    height: 10px;
+    background-color: #1d1d1d;
+    border-radius: 50%;
+}
